@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { User } from '@supabase/supabase-js';
@@ -16,11 +18,12 @@ export default function Account() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
+    if (!supabase) { setLoading(false); return; }
+    supabase.auth.getUser().then(({ data }: any) => {
       setUser(data.user);
       setLoading(false);
     });
-    const { data: listener } = supabase.auth.onAuthStateChange((_ev, session) => {
+    const { data: listener } = supabase.auth.onAuthStateChange((_ev: any, session: any) => {
       setUser(session?.user ?? null);
     });
     return () => listener.subscription.unsubscribe();
@@ -28,6 +31,7 @@ export default function Account() {
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!supabase) { setError('Authentication not configured yet.'); return; }
     setError('');
     setMessage('');
     setSubmitting(true);
@@ -46,6 +50,7 @@ export default function Account() {
   };
 
   const handleSignOut = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
     setUser(null);
   };
