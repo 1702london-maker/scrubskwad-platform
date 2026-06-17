@@ -230,6 +230,16 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <aside className="mt-10 border-l border-primary/25 pl-6 md:mt-auto md:max-w-[260px]">
+            <p className="font-headline-md text-[24px] leading-none text-primary">2 hr</p>
+            <p className="mt-2 font-label-md text-[11px] uppercase tracking-[0.22em] text-secondary">
+              quote response
+            </p>
+            <p className="mt-4 font-body-md text-[13px] leading-6 text-on-surface-variant">
+              Fixed proposals, careful arrival windows, and teams briefed before they reach your door.
+            </p>
+          </aside>
         </div>
       </section>
 

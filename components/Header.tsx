@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useCart } from '@/lib/cart-context';
 import { useState } from 'react';
 
@@ -23,7 +23,6 @@ const shopLinks = [
 
 export default function Header() {
   const pathname = usePathname();
-  const router = useRouter();
   const { totalItems } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
@@ -33,29 +32,28 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full z-50 glass-header border-b border-[#c8c4be]/30">
-      <div className="flex justify-between items-center px-6 md:px-20 py-4 max-w-[1400px] mx-auto">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-4 md:px-20 max-w-[1400px] mx-auto">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <Image src="/logo.jpg" alt="Scrubskwad" width={48} height={48} className="object-contain" />
-          <span className="font-headline-md text-headline-md text-primary tracking-tight font-bold hidden sm:block">Scrubskwad</span>
+          <Image src="/logo.jpg" alt="Scrubskwad" width={54} height={54} className="object-contain" />
+          <span className="font-headline-md text-[25px] leading-none text-primary tracking-tight font-bold hidden sm:block">Scrubskwad</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center justify-center gap-1">
           <Link
             href="/"
-            className={`font-label-md text-label-md transition-colors ${pathname === '/' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
           >
             Home
           </Link>
 
           {/* Services flyout */}
           <div className="nav-item relative">
-            <button className={`font-label-md text-label-md transition-colors flex items-center gap-1 ${isActive('/services') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}>
+            <Link href="/services" className={`block px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${isActive('/services') ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}>
               Services
-              <span className="material-symbols-outlined text-[16px]">expand_more</span>
-            </button>
+            </Link>
             <div className="flyout-menu absolute top-full left-0 mt-3 w-72 bg-surface-container-lowest border border-tertiary-fixed shadow-[0_40px_80px_-20px_rgba(212,195,161,0.15)] z-50">
               {serviceLinks.map(link => (
                 <Link
@@ -71,10 +69,9 @@ export default function Header() {
 
           {/* Shop flyout */}
           <div className="nav-item relative">
-            <button className={`font-label-md text-label-md transition-colors flex items-center gap-1 ${isActive('/shop') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}>
+            <Link href="/shop" className={`block px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${isActive('/shop') ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}>
               Shop
-              <span className="material-symbols-outlined text-[16px]">expand_more</span>
-            </button>
+            </Link>
             <div className="flyout-menu absolute top-full left-0 mt-3 w-64 bg-surface-container-lowest border border-tertiary-fixed shadow-[0_40px_80px_-20px_rgba(212,195,161,0.15)] z-50">
               {shopLinks.map(link => (
                 <Link
@@ -90,7 +87,7 @@ export default function Header() {
 
           <Link
             href="/franchise"
-            className={`font-label-md text-label-md transition-colors ${pathname === '/franchise' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/franchise' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
           >
             Franchise
           </Link>
@@ -102,20 +99,24 @@ export default function Header() {
           </Link>
           <Link
             href="/contact"
-            className={`font-label-md text-label-md transition-colors ${pathname === '/contact' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
           >
             Contact
           </Link>
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center justify-end space-x-4">
           <div className="hidden md:flex items-center space-x-3">
             <Link href="/account" aria-label="Account">
-              <span className="material-symbols-outlined text-secondary hover:text-primary transition-colors cursor-pointer text-[22px]">person</span>
+              <span className="font-label-md text-[11px] uppercase tracking-[0.18em] text-secondary hover:text-primary transition-colors">Account</span>
             </Link>
-            <Link href="/cart" className="relative" aria-label="Cart">
-              <span className="material-symbols-outlined text-secondary hover:text-primary transition-colors cursor-pointer text-[22px]">shopping_cart</span>
+            <Link href="/cart" className="relative inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors" aria-label="Cart">
+              <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.2 7.5h13.1l-1.2 8.2H7.4L6.2 7.5Z" stroke="currentColor" strokeWidth="1.7" />
+                <path d="M6.2 7.5 5.7 4H3.8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square" />
+                <path d="M8.7 20h.1M17 20h.1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              </svg>
               {totalItems > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none">
                   {totalItems}
@@ -125,7 +126,7 @@ export default function Header() {
           </div>
           <Link
             href="/request-a-quote"
-            className="bg-primary-container text-on-primary-container px-5 py-2.5 font-label-md text-label-md hover:bg-primary-fixed-dim transition-all active:scale-[0.98] hidden md:block"
+            className="hidden bg-primary px-5 py-3 font-label-md text-[11px] uppercase tracking-[0.18em] text-on-primary transition-all hover:bg-primary/90 active:scale-[0.98] md:block"
           >
             Book Now
           </Link>
@@ -136,7 +137,7 @@ export default function Header() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            <span className="material-symbols-outlined text-[24px]">{mobileOpen ? 'close' : 'menu'}</span>
+            <span className="font-label-md text-[12px] uppercase tracking-[0.18em]">{mobileOpen ? 'Close' : 'Menu'}</span>
           </button>
         </div>
       </div>
@@ -151,7 +152,7 @@ export default function Header() {
               className="flex items-center justify-between w-full font-label-md text-label-md text-on-surface py-2"
               onClick={() => setMobileServices(!mobileServices)}
             >
-              Services <span className="material-symbols-outlined text-[18px]">{mobileServices ? 'expand_less' : 'expand_more'}</span>
+              Services <span>{mobileServices ? '-' : '+'}</span>
             </button>
             {mobileServices && (
               <div className="pl-4 space-y-2 mt-2">
@@ -167,7 +168,7 @@ export default function Header() {
               className="flex items-center justify-between w-full font-label-md text-label-md text-on-surface py-2"
               onClick={() => setMobileShop(!mobileShop)}
             >
-              Shop <span className="material-symbols-outlined text-[18px]">{mobileShop ? 'expand_less' : 'expand_more'}</span>
+              Shop <span>{mobileShop ? '-' : '+'}</span>
             </button>
             {mobileShop && (
               <div className="pl-4 space-y-2 mt-2">
@@ -184,10 +185,10 @@ export default function Header() {
 
           <div className="flex items-center gap-4 pt-2 border-t border-tertiary-fixed">
             <Link href="/account" onClick={() => setMobileOpen(false)}>
-              <span className="material-symbols-outlined text-secondary">person</span>
+              <span className="font-label-md text-[12px] uppercase tracking-[0.18em] text-secondary">Account</span>
             </Link>
             <Link href="/cart" className="relative" onClick={() => setMobileOpen(false)}>
-              <span className="material-symbols-outlined text-secondary">shopping_cart</span>
+              <span className="font-label-md text-[12px] uppercase tracking-[0.18em] text-secondary">Cart</span>
               {totalItems > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                   {totalItems}

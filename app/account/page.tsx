@@ -58,7 +58,7 @@ export default function Account() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <span className="material-symbols-outlined text-primary text-4xl animate-spin">progress_activity</span>
+        <span className="font-label-md text-[12px] uppercase tracking-[0.18em] text-primary">Loading</span>
       </div>
     );
   }
@@ -83,7 +83,7 @@ export default function Account() {
                 <h3 className="font-headline-md text-headline-md mb-3" style={{ fontFamily: 'EB Garamond, serif' }}>{item.title}</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant mb-6">{item.desc}</p>
                 <button className="font-label-md text-label-md text-primary flex items-center gap-2 hover:gap-3 transition-all">
-                  {item.action} <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  {item.action}
                 </button>
               </div>
             ))}

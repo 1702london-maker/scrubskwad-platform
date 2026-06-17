@@ -1,8 +1,40 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
+
+const footerGroups = [
+  {
+    title: 'Services',
+    links: [
+      ['Regular Home Cleaning', '/services/regular-home-cleaning'],
+      ['Deep Cleaning', '/services/deep-cleaning'],
+      ['End of Tenancy', '/services/end-of-tenancy-cleaning'],
+      ['Office & Commercial', '/services/office-commercial-cleaning'],
+      ['Carpet & Upholstery', '/services/carpet-upholstery-cleaning'],
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      ['About Us', '/about-us'],
+      ['How It Works', '/how-it-works'],
+      ['Franchise', '/franchise'],
+      ['Join Our Team', '/join-our-team'],
+      ['FAQs', '/faqs'],
+    ],
+  },
+  {
+    title: 'Shop',
+    links: [
+      ['All Products', '/shop'],
+      ['Cleaning Chemicals', '/shop/cleaning-chemicals-solutions'],
+      ['Tools & Equipment', '/shop/cleaning-tools-equipment'],
+      ['Cleaning Machines', '/shop/cleaning-machines'],
+    ],
+  },
+];
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -105,12 +137,12 @@ export default function Footer() {
             <p className="font-body-md text-[13px] text-white/50 mb-6 leading-relaxed">
               Cleaning insights, seasonal tips and product updates delivered to your inbox.
             </p>
-            <form onSubmit={handleSubscribe} className="space-y-3">
+            <form onSubmit={handleSubscribe} className="mt-6 flex border border-tertiary-fixed bg-white">
               <input
                 type="email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Your email address"
+                onChange={event => setEmail(event.target.value)}
+                placeholder="Email address"
                 required
                 className="w-full bg-white/5 border border-white/15 px-4 py-3 font-body-md text-[13px] text-white outline-none focus:border-white/40 transition-colors placeholder:text-white/25"
               />
@@ -132,7 +164,6 @@ export default function Footer() {
             <Link href="/request-a-quote"      className="font-label-md text-[11px] text-white/30 hover:text-white/60 transition-colors">Request Quote</Link>
           </div>
         </div>
-
       </div>
     </footer>
   );
