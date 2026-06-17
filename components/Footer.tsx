@@ -14,9 +14,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-4">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image src="/scrubskwad-logo.png" alt="Scrubskwad" width={48} height={48} className="object-contain" />
-              <span className="text-2xl font-serif font-semibold tracking-tight">Scrubskwad</span>
+            <Link href="/" className="inline-block mb-4">
+              <Image src="/scrubskwad-logo.png" alt="Scrubskwad" width={100} height={100} className="object-contain" />
             </Link>
             <p className="text-xs text-gray-400 mb-6 font-semibold uppercase tracking-widest">Luxury Property Care</p>
             <div className="flex space-x-4">

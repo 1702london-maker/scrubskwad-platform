@@ -36,9 +36,8 @@ export default function Header() {
 
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/scrubskwad-logo.png" alt="Scrubskwad" width={44} height={44} className="object-contain" />
-            <span className="text-2xl font-serif font-semibold tracking-tight">Scrubskwad</span>
+          <Link href="/">
+            <Image src="/scrubskwad-logo.png" alt="Scrubskwad" width={80} height={80} className="object-contain" />
           </Link>
         </div>
 
