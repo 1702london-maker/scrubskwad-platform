@@ -13,38 +13,44 @@ export default function Footer() {
     if (email) {
       setSubscribed(true);
       setEmail('');
-      setTimeout(() => setSubscribed(false), 3000);
+      setTimeout(() => setSubscribed(false), 4000);
     }
   };
 
   return (
     <footer className="bg-surface-container-low border-t border-tertiary-fixed w-full">
-      <div className="px-6 md:px-20 py-24 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+      <div className="px-6 md:px-16 xl:px-20 py-20 max-w-[1400px] mx-auto">
 
-          {/* Column 1: Brand */}
-          <div className="md:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <Image src="/logo.jpg" alt="Scrubskwad" width={48} height={48} className="object-contain" />
-              <span className="font-headline-md text-headline-md text-primary font-bold">Scrubskwad</span>
+        {/* Main columns */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 xl:gap-14">
+
+          {/* Column 1: Brand — wider */}
+          <div className="md:col-span-3">
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <Image src="/logo.jpg" alt="Scrubskwad" width={44} height={44} className="object-contain" />
+              <span className="font-headline-md text-headline-md text-primary font-bold tracking-tight">Scrubskwad</span>
             </Link>
-            <p className="font-body-md text-body-md text-secondary max-w-xs mb-6">
-              Luxury domestic and commercial cleaning services across the United Kingdom. Meticulous, discreet, and professional.
+            <p className="font-body-md text-body-md text-secondary mb-7 leading-relaxed">
+              Professional domestic and commercial cleaning services across the United Kingdom. Meticulous, discreet, and results-driven.
             </p>
-            <div className="space-y-2 mb-6">
-              <p className="font-body-md text-body-md text-secondary flex items-start gap-2">
-                <span className="material-symbols-outlined text-primary text-[18px] mt-0.5">location_on</span>
-                The Atrium, Belgravia Square, Westminster, London SW1X 7PJ
+
+            {/* Contact placeholders — real details to be filled by business */}
+            <div className="space-y-2.5 mb-7">
+              <p className="font-body-md text-body-md text-secondary flex items-start gap-2.5">
+                <span className="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">location_on</span>
+                London, United Kingdom
               </p>
-              <p className="font-body-md text-body-md text-secondary flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[18px]">call</span>
-                +44 (0) 20 7946 0123
+              <p className="font-body-md text-body-md text-secondary flex items-center gap-2.5">
+                <span className="material-symbols-outlined text-primary text-[18px] shrink-0">call</span>
+                +44 (0) 20 XXXX XXXX
               </p>
-              <p className="font-body-md text-body-md text-secondary flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[18px]">mail</span>
-                concierge@scrubskwad.co.uk
+              <p className="font-body-md text-body-md text-secondary flex items-center gap-2.5">
+                <span className="material-symbols-outlined text-primary text-[18px] shrink-0">mail</span>
+                hello@scrubskwad.co.uk
               </p>
             </div>
+
+            {/* Social icons */}
             <div className="flex gap-3">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-tertiary-fixed flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-all" aria-label="Instagram">
@@ -55,20 +61,20 @@ export default function Footer() {
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-tertiary-fixed flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-all" aria-label="Twitter/X">
+                className="w-9 h-9 rounded-full border border-tertiary-fixed flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-all" aria-label="X / Twitter">
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
             </div>
           </div>
 
           {/* Column 2: Services */}
-          <div>
+          <div className="md:col-span-2">
             <h5 className="font-label-md text-label-md text-primary tracking-widest uppercase mb-6">Services</h5>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {[
-                { label: 'Regular Home Cleaning', href: '/services/regular-home-cleaning' },
-                { label: 'Deep Cleaning', href: '/services/deep-cleaning' },
-                { label: 'End of Tenancy Cleaning', href: '/services/end-of-tenancy-cleaning' },
+                { label: 'Regular Home Cleaning',        href: '/services/regular-home-cleaning' },
+                { label: 'Deep Cleaning',                href: '/services/deep-cleaning' },
+                { label: 'End of Tenancy Cleaning',      href: '/services/end-of-tenancy-cleaning' },
                 { label: 'Office & Commercial Cleaning', href: '/services/office-commercial-cleaning' },
                 { label: 'Carpet & Upholstery Cleaning', href: '/services/carpet-upholstery-cleaning' },
               ].map(l => (
@@ -80,14 +86,14 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Shop */}
-          <div>
+          <div className="md:col-span-2">
             <h5 className="font-label-md text-label-md text-primary tracking-widest uppercase mb-6">Shop</h5>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {[
                 { label: 'Cleaning Chemicals & Solutions', href: '/shop/cleaning-chemicals-solutions' },
-                { label: 'Cleaning Tools & Equipment', href: '/shop/cleaning-tools-equipment' },
-                { label: 'Cleaning Machines', href: '/shop/cleaning-machines' },
-                { label: 'All Products', href: '/shop' },
+                { label: 'Cleaning Tools & Equipment',     href: '/shop/cleaning-tools-equipment' },
+                { label: 'Cleaning Machines',              href: '/shop/cleaning-machines' },
+                { label: 'All Products',                   href: '/shop' },
               ].map(l => (
                 <li key={l.href}>
                   <Link href={l.href} className="font-body-md text-body-md text-secondary hover:text-primary hover:translate-x-1 transition-all inline-block">{l.label}</Link>
@@ -97,18 +103,18 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Company & Support */}
-          <div>
+          <div className="md:col-span-2">
             <h5 className="font-label-md text-label-md text-primary tracking-widest uppercase mb-6">Company & Support</h5>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {[
-                { label: 'About Us', href: '/about-us' },
-                { label: 'How It Works', href: '/how-it-works' },
-                { label: 'Franchise', href: '/franchise' },
-                { label: 'Join Our Team', href: '/join-our-team' },
-                { label: 'FAQs', href: '/faqs' },
-                { label: 'Request a Quote', href: '/request-a-quote' },
-                { label: 'Terms & Conditions', href: '/terms-and-conditions' },
-                { label: 'Privacy Policy', href: '/privacy-policy' },
+                { label: 'About Us',            href: '/about-us' },
+                { label: 'How It Works',        href: '/how-it-works' },
+                { label: 'Franchise',           href: '/franchise' },
+                { label: 'Join Our Team',       href: '/join-our-team' },
+                { label: 'FAQs',               href: '/faqs' },
+                { label: 'Request a Quote',     href: '/request-a-quote' },
+                { label: 'Terms & Conditions',  href: '/terms-and-conditions' },
+                { label: 'Privacy Policy',      href: '/privacy-policy' },
               ].map(l => (
                 <li key={l.href}>
                   <Link href={l.href} className="font-body-md text-body-md text-secondary hover:text-primary hover:translate-x-1 transition-all inline-block">{l.label}</Link>
@@ -118,25 +124,25 @@ export default function Footer() {
           </div>
 
           {/* Column 5: Newsletter */}
-          <div>
+          <div className="md:col-span-3">
             <h5 className="font-label-md text-label-md text-primary tracking-widest uppercase mb-6">Newsletter</h5>
-            <p className="font-body-md text-body-md text-secondary mb-6">
-              Subscribe for estate maintenance protocols and exclusive first access to new releases.
+            <p className="font-body-md text-body-md text-secondary mb-6 leading-relaxed">
+              Stay up to date with our latest offers, cleaning tips, and new services. No spam — unsubscribe any time.
             </p>
             <form onSubmit={handleSubscribe} className="space-y-3">
               <input
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="YOUR EMAIL ADDRESS"
+                placeholder="Your email address"
                 required
-                className="w-full bg-white border border-tertiary-fixed px-4 py-3 font-label-md text-label-md outline-none focus:border-primary transition-colors placeholder:text-surface-dim"
+                className="w-full bg-white border border-tertiary-fixed px-4 py-3.5 font-body-md text-body-md outline-none focus:border-primary transition-colors placeholder:text-on-surface-variant/40"
               />
               <button
                 type="submit"
-                className="w-full bg-primary text-on-primary font-label-md text-label-md px-6 py-3 uppercase tracking-widest hover:bg-primary/90 transition-all active:scale-[0.98]"
+                className="w-full bg-primary text-on-primary font-label-md text-label-md px-6 py-3.5 uppercase tracking-widest hover:bg-primary/90 transition-all active:scale-[0.98]"
               >
-                {subscribed ? 'Subscribed!' : 'Subscribe'}
+                {subscribed ? '✓ Subscribed!' : 'Subscribe'}
               </button>
             </form>
           </div>
@@ -144,13 +150,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-tertiary-fixed flex flex-col md:flex-row justify-between items-center text-secondary gap-4">
-          <p className="font-label-md text-label-md">© {new Date().getFullYear()} Scrubskwad Luxury Cleaning. All rights reserved.</p>
+          <p className="font-label-md text-label-md">© {new Date().getFullYear()} Scrubskwad. All rights reserved.</p>
           <div className="flex gap-8">
             <Link href="/terms-and-conditions" className="font-label-md text-label-md hover:text-primary transition-colors">Terms & Conditions</Link>
             <Link href="/privacy-policy" className="font-label-md text-label-md hover:text-primary transition-colors">Privacy Policy</Link>
           </div>
-          <p className="font-label-md text-label-md italic">Designing cleanliness, delivering peace.</p>
+          <p className="font-label-md text-label-md italic text-on-surface-variant">Designing cleanliness, delivering peace.</p>
         </div>
+
       </div>
     </footer>
   );
