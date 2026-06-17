@@ -20,7 +20,7 @@ export default function CleaningTools() {
       <section className="pt-40 pb-12 px-6 md:px-20 max-w-[1200px] mx-auto">
         <div className="flex items-center gap-3 mb-6">
           <Link href="/shop" className="font-label-md text-label-md text-secondary hover:text-primary transition-colors">Shop</Link>
-          <span className="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+          <span className="font-body-md text-[14px] text-secondary">/</span>
           <span className="font-label-md text-label-md text-primary">Cleaning Tools & Equipment</span>
         </div>
         <h1 className="font-display-lg text-display-lg md:text-5xl text-on-surface mb-6" style={{ fontFamily: 'EB Garamond, serif' }}>Cleaning Tools & Equipment</h1>
@@ -31,7 +31,7 @@ export default function CleaningTools() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {products.map(p => (
             <div key={p.id} className="group bg-white border border-[#c8c4be]/30 hover:border-primary/30 transition-all">
-              <div className="relative overflow-hidden h-56 bg-surface-container-low">
+              <div className="relative overflow-hidden h-[180px] bg-surface-container-low">
                 <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMiLL-nMzswzuRR_LmxrI39wHeneQfDrCUMP0micnc4mRyE7ngg3t44INwrsCSeieI-Dh-63xd4Kl8ti7U7vhClwXFByKjqqFV64R_MCuUzJ_75aeU1X0aEVF77w73ijD_I85YFlgh1hBC70iYc0aZR6weV6hP_U4PDnqfcW2efiTgq7ojLpvVQyydohVwdAxhyYguj1UeoBIYF-qPyFYR3RiwXlszsWNcMO8JRHVPl-kbBDhVeM-VFEcO4smycAL2PFVLAtWP8lg"
                   alt={p.name} />

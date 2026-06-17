@@ -36,7 +36,7 @@ export default function FAQs() {
                 onClick={() => setOpen(open === i ? null : i)}
               >
                 <span className="font-headline-md text-[18px] text-on-surface" style={{ fontFamily: 'EB Garamond, serif' }}>{faq.q}</span>
-                <span className={`material-symbols-outlined text-primary shrink-0 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`}>expand_more</span>
+                <span className="font-label-md text-[16px] text-primary">{open === i ? '-' : '+'}</span>
               </button>
               <div className={`overflow-hidden transition-all duration-400 ${open === i ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
                 <p className="font-body-md text-body-md text-on-surface-variant">{faq.a}</p>

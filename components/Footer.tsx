@@ -57,13 +57,18 @@ export default function Footer() {
               <Image src="/logo.jpg" alt="Scrubskwad" width={54} height={54} className="object-contain" />
               <span className="font-headline-md text-[28px] leading-none text-primary">Scrubskwad</span>
             </Link>
-            <p className="mt-6 max-w-[340px] font-body-md text-[15px] leading-7 text-secondary">
-              Premium domestic and commercial cleaning across the United Kingdom, prepared with care and delivered with discretion.
-            </p>
-            <div className="mt-8 space-y-3 font-body-md text-[14px] leading-6 text-secondary">
-              <p>London, United Kingdom</p>
-              <p>+44 (0) 20 XXXX XXXX</p>
-              <p>hello@scrubskwad.co.uk</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {['Instagram', 'Facebook', 'X'].map(label => (
+                <a
+                  key={label}
+                  href={label === 'X' ? 'https://twitter.com' : `https://${label.toLowerCase()}.com`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-tertiary-fixed px-4 py-2 font-label-md text-[11px] uppercase tracking-[0.18em] text-secondary transition hover:border-primary hover:text-primary"
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -112,19 +117,6 @@ export default function Footer() {
                 {subscribed ? 'Done' : 'Join'}
               </button>
             </form>
-            <div className="mt-7 flex gap-3">
-              {['Instagram', 'Facebook', 'X'].map(label => (
-                <a
-                  key={label}
-                  href={label === 'X' ? 'https://twitter.com' : `https://${label.toLowerCase()}.com`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-tertiary-fixed px-4 py-2 font-label-md text-[11px] uppercase tracking-[0.18em] text-secondary transition hover:border-primary hover:text-primary"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 
