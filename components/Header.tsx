@@ -33,26 +33,26 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full z-50 glass-header border-b border-[#c8c4be]/30">
-      <div className="flex justify-between items-center px-6 md:px-20 py-4 max-w-[1400px] mx-auto">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-4 md:px-20 max-w-[1400px] mx-auto">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <Image src="/logo.jpg" alt="Scrubskwad" width={48} height={48} className="object-contain" />
-          <span className="font-headline-md text-headline-md text-primary tracking-tight font-bold hidden sm:block">Scrubskwad</span>
+          <Image src="/logo.jpg" alt="Scrubskwad" width={54} height={54} className="object-contain" />
+          <span className="font-headline-md text-[25px] leading-none text-primary tracking-tight font-bold hidden sm:block">Scrubskwad</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center justify-center gap-2">
           <Link
             href="/"
-            className={`font-label-md text-label-md transition-colors ${pathname === '/' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
           >
             Home
           </Link>
 
           {/* Services flyout */}
           <div className="nav-item relative">
-            <button className={`font-label-md text-label-md transition-colors flex items-center gap-1 ${isActive('/services') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}>
+            <button className={`flex items-center gap-1 px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${isActive('/services') ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}>
               Services
               <span className="material-symbols-outlined text-[16px]">expand_more</span>
             </button>
@@ -71,7 +71,7 @@ export default function Header() {
 
           {/* Shop flyout */}
           <div className="nav-item relative">
-            <button className={`font-label-md text-label-md transition-colors flex items-center gap-1 ${isActive('/shop') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}>
+            <button className={`flex items-center gap-1 px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${isActive('/shop') ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}>
               Shop
               <span className="material-symbols-outlined text-[16px]">expand_more</span>
             </button>
@@ -90,20 +90,20 @@ export default function Header() {
 
           <Link
             href="/franchise"
-            className={`font-label-md text-label-md transition-colors ${pathname === '/franchise' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/franchise' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
           >
             Franchise
           </Link>
           <Link
             href="/contact"
-            className={`font-label-md text-label-md transition-colors ${pathname === '/contact' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
           >
             Contact
           </Link>
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center justify-end space-x-4">
           <div className="hidden md:flex items-center space-x-3">
             <Link href="/account" aria-label="Account">
               <span className="material-symbols-outlined text-secondary hover:text-primary transition-colors cursor-pointer text-[22px]">person</span>
@@ -119,9 +119,9 @@ export default function Header() {
           </div>
           <Link
             href="/request-a-quote"
-            className="bg-primary-container text-on-primary-container px-5 py-2.5 font-label-md text-label-md hover:bg-primary-fixed-dim transition-all active:scale-[0.98] hidden md:block"
+            className="hidden border border-primary/25 bg-white/60 px-5 py-3 font-label-md text-[11px] uppercase tracking-[0.18em] text-primary transition-all hover:bg-[#dcefed] active:scale-[0.98] md:block"
           >
-            Book Now
+            Book
           </Link>
 
           {/* Mobile hamburger */}
