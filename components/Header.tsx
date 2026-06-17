@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/lib/cart-context';
 import { useState } from 'react';
@@ -35,7 +36,8 @@ export default function Header() {
 
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="/">
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/scrubskwad-logo.png" alt="Scrubskwad" width={44} height={44} className="object-contain" />
             <span className="text-2xl font-serif font-semibold tracking-tight">Scrubskwad</span>
           </Link>
         </div>

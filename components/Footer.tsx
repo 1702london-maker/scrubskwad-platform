@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -13,7 +14,10 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-4">
-            <Link href="/"><span className="text-2xl font-serif font-semibold tracking-tight mb-4 block">Scrubskwad</span></Link>
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <Image src="/scrubskwad-logo.png" alt="Scrubskwad" width={48} height={48} className="object-contain" />
+              <span className="text-2xl font-serif font-semibold tracking-tight">Scrubskwad</span>
+            </Link>
             <p className="text-xs text-gray-400 mb-6 font-semibold uppercase tracking-widest">Luxury Property Care</p>
             <div className="flex space-x-4">
               <a className="text-gray-900 hover:opacity-70" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
