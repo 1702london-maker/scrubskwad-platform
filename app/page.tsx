@@ -1,362 +1,408 @@
 import Link from 'next/link';
-import Image from 'next/image';
-
-/* ── Shared helpers ── */
-const Eyebrow = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-label-md text-[10px] tracking-[0.22em] uppercase text-on-surface/40 mb-4">{children}</p>
-);
-
-const DarkBtn = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <Link href={href}
-    className="inline-block bg-on-surface text-white font-label-md text-[11px] tracking-[0.18em] uppercase px-7 py-3.5 hover:bg-on-surface/85 transition-all">
-    {children}
-  </Link>
-);
-
-const OutlineBtn = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <Link href={href}
-    className="inline-block border border-on-surface text-on-surface font-label-md text-[11px] tracking-[0.18em] uppercase px-7 py-3.5 hover:bg-on-surface hover:text-white transition-all">
-    {children}
-  </Link>
-);
-
-/* ── Interior image URLs ── */
-const IMG = {
-  hero:      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80',
-  about:     'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80',
-  svc1:      'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=70',
-  svc2:      'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=400&q=70',
-  svc3:      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70',
-  svc4:      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=70',
-  svc5:      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=70',
-  proj1:     'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=75',
-  proj2:     'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=500&q=75',
-  proj3:     'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&q=75',
-  proj4:     'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&q=75',
-  prod1:     'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=70',
-  prod2:     'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70',
-  prod3:     'https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?w=400&q=70',
-  prod4:     'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=70',
-  franchise: 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=800&q=75',
-};
 
 export default function Home() {
   return (
-    <main className="bg-white">
+    <main className="bg-white text-scrub-dark overflow-x-hidden">
 
-      {/* ══ 1. HERO ══ */}
-      <section className="pt-[60px] min-h-screen grid md:grid-cols-2">
-        {/* Left: text */}
-        <div className="flex flex-col justify-center px-8 md:px-16 xl:px-24 py-20 md:py-0">
-          <Eyebrow>Premium Property Care</Eyebrow>
-          <h1 className="text-[40px] md:text-[52px] xl:text-[62px] leading-[1.08] text-on-surface mb-6"
-            style={{ fontFamily: 'EB Garamond, serif' }}>
-            Cleaning services shaped around the rhythm of your property.
-          </h1>
-          <p className="font-body-md text-[15px] text-on-surface/60 leading-relaxed mb-10 max-w-[480px]">
-            Discreet domestic and commercial cleaning for clients who value consistency, trust and spaces that always feel ready.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <DarkBtn href="/request-a-quote">Request a Quote</DarkBtn>
-            <OutlineBtn href="/services">Explore Services</OutlineBtn>
-          </div>
+      {/* ── Hero ── */}
+      <section className="relative min-h-[85vh] flex items-center bg-[#f9f9f9]">
+        <div className="absolute inset-0 z-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            alt="Luxury interior"
+            className="w-full h-full object-cover object-center opacity-90"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgwqWlh67fSy5If-MgKiTzaNGc1Mefhkmek2K4lFcfF6vOy5cpZGx4qUIj1AyXQSlCzBPAX0BIydJjVl9Dt5_20u4rshqyyB8pFtPd7oPbILsWKQxFZn3GpfTdYm-tXs6dedkXArZmCimGQwR6jvrJJYaV16FU6lvNvx_JtgwMWMMCHTMEF7g-74UwT64JSDexDIHVkzIWfr8aoBJRdPfIn_9bfnM93wCXk3MKAQCr5akeI77Gy8KuWbn1hZ4pJfKae1TWuFOA9YI"
+          />
+          <div className="absolute inset-0 hero-gradient" />
         </div>
-
-        {/* Right: image + floating card */}
-        <div className="relative bg-[#f4f2ef] min-h-[60vh] md:min-h-full">
-          <Image src={IMG.hero} alt="Luxury interior" fill className="object-cover" priority />
-          <div className="absolute top-8 right-8 bg-white shadow-xl p-6 w-[190px]">
-            <div className="flex items-end gap-1 mb-3">
-              <span className="text-[32px] font-semibold text-on-surface leading-none" style={{ fontFamily: 'EB Garamond, serif' }}>2</span>
-              <span className="text-[13px] text-on-surface/50 mb-1">hr</span>
-            </div>
-            <p className="font-label-md text-[9px] tracking-[0.18em] uppercase text-on-surface/40 mb-4">Average Response</p>
-            <ul className="space-y-2">
-              {['Vetted Teams', 'Fully Insured', 'Fixed Pricing'].map(item => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="w-4 h-4 bg-on-surface rounded-full flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-white text-[11px]">check</span>
-                  </span>
-                  <span className="font-body-md text-[12px] text-on-surface/70">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 2. STATS ══ */}
-      <section className="bg-[#f6f4f1] border-y border-on-surface/6">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-on-surface/8">
-          {[
-            { stat: '500+',  label: 'Homes Maintained',  sub: 'Across London & the Home Counties' },
-            { stat: '4.9★',  label: 'Client Rating',     sub: 'Based on verified reviews' },
-            { stat: '24hr',  label: 'Response Time',     sub: 'We aim to respond within 2 hours' },
-            { stat: '100%',  label: 'Insured Teams',     sub: 'Your property is in safe hands' },
-          ].map(item => (
-            <div key={item.label} className="px-8 py-10 text-center md:text-left">
-              <p className="text-[34px] md:text-[40px] leading-none text-on-surface mb-1" style={{ fontFamily: 'EB Garamond, serif' }}>{item.stat}</p>
-              <p className="font-label-md text-[10px] tracking-[0.18em] uppercase text-on-surface mb-1">{item.label}</p>
-              <p className="font-body-md text-[12px] text-on-surface/45">{item.sub}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══ 3. WHO WE ARE ══ */}
-      <section className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-0">
-        <div className="flex flex-col justify-center px-8 md:px-16 xl:px-24 py-20 md:py-28">
-          <Eyebrow>Who We Are</Eyebrow>
-          <h2 className="text-[36px] md:text-[48px] leading-[1.1] text-on-surface mb-7" style={{ fontFamily: 'EB Garamond, serif' }}>
-            Quiet luxury starts with a clean space.
-          </h2>
-          <p className="font-body-md text-[14px] text-on-surface/60 leading-relaxed mb-5">
-            Scrubskwad was founded on the belief that truly exceptional cleaning should be invisible — seamlessly woven into the rhythm of your life. We work with private clients, property managers and businesses across London and the Home Counties.
-          </p>
-          <p className="font-body-md text-[14px] text-on-surface/60 leading-relaxed mb-10">
-            Every team member is individually vetted, trained to our exacting standards, and briefed on your specific property before each visit. The result is a service that feels personal, professional and effortlessly consistent.
-          </p>
-          <div><DarkBtn href="/about-us">Learn More</DarkBtn></div>
-        </div>
-        <div className="relative min-h-[420px] md:min-h-full bg-[#f4f2ef]">
-          <Image src={IMG.about} alt="Who we are" fill className="object-cover" />
-        </div>
-      </section>
-
-      {/* ══ 4. SERVICES ══ */}
-      <section className="bg-[#f8f7f5] py-20 md:py-28">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20">
-          <div className="grid md:grid-cols-2 gap-12 items-end mb-14">
-            <div>
-              <Eyebrow>Services</Eyebrow>
-              <h2 className="text-[36px] md:text-[46px] leading-[1.1] text-on-surface" style={{ fontFamily: 'EB Garamond, serif' }}>
-                Cleaning shaped around the property.
-              </h2>
-            </div>
-            <div>
-              <div className="flex gap-3 justify-end items-end mb-4">
-                {[IMG.svc1, IMG.svc2, IMG.svc3, IMG.svc4, IMG.svc5].map((src, i) => (
-                  <div key={i} className="relative w-[72px] h-[90px] shrink-0 overflow-hidden">
-                    <Image src={src} alt="" fill className="object-cover" />
-                  </div>
-                ))}
-              </div>
-              <Link href="/services" className="flex items-center gap-2 font-label-md text-[10px] tracking-[0.16em] uppercase text-on-surface justify-end hover:gap-3 transition-all">
-                View All Services <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 border-t border-on-surface/10">
-            {[
-              { num: '01', title: 'Regular Home Cleaning',  desc: 'Consistent scheduled cleaning tailored to your household.', href: '/services/regular-home-cleaning' },
-              { num: '02', title: 'Deep Cleaning',          desc: 'A thorough, intensive clean of every surface and detail.',   href: '/services/deep-cleaning' },
-              { num: '03', title: 'End of Tenancy',         desc: 'Spotless preparation for check-out or new occupancy.',       href: '/services/end-of-tenancy-cleaning' },
-              { num: '04', title: 'Office & Commercial',    desc: 'Professional environments maintained to the highest standard.', href: '/services/office-commercial-cleaning' },
-              { num: '05', title: 'Carpet & Upholstery',   desc: 'Deep extraction cleaning for fabrics and soft furnishings.', href: '/services/carpet-upholstery-cleaning' },
-            ].map((s, i) => (
-              <div key={s.num} className={`group pt-8 pb-6 px-6 border-b md:border-b-0 md:border-r border-on-surface/10 ${i === 4 ? 'border-0' : ''}`}>
-                <p className="font-label-md text-[10px] tracking-[0.2em] text-on-surface/25 mb-5">{s.num}</p>
-                <h3 className="font-body-md text-[14px] font-semibold text-on-surface mb-3 leading-snug">{s.title}</h3>
-                <p className="font-body-md text-[12px] text-on-surface/50 leading-relaxed mb-5">{s.desc}</p>
-                <Link href={s.href} className="flex items-center gap-1.5 font-label-md text-[10px] tracking-[0.16em] uppercase text-on-surface group-hover:gap-2.5 transition-all">
-                  View <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 5. RECENT PROJECTS ══ */}
-      <section className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20 py-20 md:py-28">
-        <div className="grid md:grid-cols-5 gap-12 items-start">
-          <div className="md:col-span-1">
-            <Eyebrow>Recent Projects</Eyebrow>
-            <h2 className="text-[32px] md:text-[40px] leading-[1.1] text-on-surface" style={{ fontFamily: 'EB Garamond, serif' }}>
-              Results that speak quietly.
-            </h2>
-          </div>
-          <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { src: IMG.proj1, label: 'Luxury Home' },
-              { src: IMG.proj2, label: 'Executive Office' },
-              { src: IMG.proj3, label: 'Short Stay Apartment' },
-              { src: IMG.proj4, label: 'End Of Tenancy' },
-            ].map(p => (
-              <div key={p.label} className="group">
-                <div className="relative h-[220px] md:h-[260px] overflow-hidden bg-[#f4f2ef] mb-3">
-                  <Image src={p.src} alt={p.label} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
-                <p className="font-label-md text-[10px] tracking-[0.14em] uppercase text-on-surface/50">{p.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 6. HOW IT WORKS ══ */}
-      <section className="bg-[#f8f7f5] py-20 md:py-28">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <Eyebrow>How It Works</Eyebrow>
-              <h2 className="text-[36px] md:text-[46px] leading-[1.1] text-on-surface" style={{ fontFamily: 'EB Garamond, serif' }}>
-                Luxury cleaning without the friction.
-              </h2>
-            </div>
-            <div>
-              <div className="flex justify-end mb-8">
-                <DarkBtn href="/request-a-quote">Request Quote</DarkBtn>
-              </div>
-              <div className="border-t border-on-surface/10">
-                {[
-                  { num: '01', icon: 'home_work',    title: 'Tell us about the property.',       desc: 'Share a few details about your space, schedule and requirements.' },
-                  { num: '02', icon: 'receipt_long', title: 'Receive a clear fixed quote.',       desc: 'A transparent, itemised quote with no hidden fees.' },
-                  { num: '03', icon: 'groups',       title: 'Our team arrives fully briefed.',    desc: 'Vetted cleaners who know exactly what is expected.' },
-                  { num: '04', icon: 'hotel_class',  title: 'Enjoy a perfectly prepared space.',  desc: 'A home or office that feels pristine, calm and ready.' },
-                ].map(step => (
-                  <div key={step.num} className="flex gap-6 py-6 border-b border-on-surface/10">
-                    <div className="shrink-0 flex flex-col items-center gap-2 pt-1">
-                      <p className="font-label-md text-[10px] tracking-[0.18em] text-on-surface/30">{step.num}</p>
-                      <span className="material-symbols-outlined text-[22px] text-on-surface/40">{step.icon}</span>
-                    </div>
-                    <div>
-                      <h3 className="font-body-md text-[15px] font-semibold text-on-surface mb-1">{step.title}</h3>
-                      <p className="font-body-md text-[13px] text-on-surface/50 leading-relaxed">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <aside className="mt-10 border-l border-primary/25 pl-6 md:mt-auto md:max-w-[260px]">
-            <p className="font-headline-md text-[24px] leading-none text-primary">2 hr</p>
-            <p className="mt-2 font-label-md text-[11px] uppercase tracking-[0.22em] text-secondary">
-              quote response
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
+          <div className="max-w-2xl">
+            <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-6">Premium Property Care</p>
+            <h1 className="text-6xl md:text-7xl leading-[1.1] mb-8">
+              Cleaning services<br />shaped around the<br />rhythm of your<br />property.
+            </h1>
+            <p className="text-lg text-gray-600 max-w-md mb-10 leading-relaxed">
+              Discreet domestic and commercial cleaning for clients who value consistency, trust and spaces that always feel ready.
             </p>
-            <p className="mt-4 font-body-md text-[13px] leading-6 text-on-surface-variant">
-              Fixed proposals, careful arrival windows, and teams briefed before they reach your door.
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      {/* ══ 7. TRUST PILLARS ══ */}
-      <section className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20 py-20 md:py-24">
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-on-surface/8">
-          {[
-            { icon: 'verified_user', title: 'Vetted Teams',        desc: 'Every cleaner is referenced, screened and trained to our exacting standards.' },
-            { icon: 'shield',        title: 'Fully Insured',       desc: 'Complete peace of mind with full public liability insurance.' },
-            { icon: 'receipt',       title: 'Fixed Quotes',        desc: 'No hidden fees or surprise charges. What we quote is what you pay.' },
-            { icon: 'headset_mic',   title: 'Responsive Support',  desc: 'Average response time under two hours, every day of the week.' },
-          ].map((p, i) => (
-            <div key={p.title} className={`px-8 py-10 text-center ${i < 3 ? 'border-r border-on-surface/8' : ''}`}>
-              <span className="material-symbols-outlined text-[32px] text-on-surface/30 mb-5 block">{p.icon}</span>
-              <h3 className="font-body-md text-[15px] font-semibold text-on-surface mb-3">{p.title}</h3>
-              <p className="font-body-md text-[12px] text-on-surface/50 leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══ 8. TESTIMONIALS ══ */}
-      <section className="bg-[#f8f7f5] py-20 md:py-28">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20">
-          <Eyebrow>Client Words</Eyebrow>
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            {[
-              { quote: 'The team did not simply clean the property. They restored the feeling of the house.',                          attr: 'Private Client',  loc: 'London' },
-              { quote: 'Professional, punctual and exceptionally thorough. I have never had a service this consistent.',              attr: 'Property Manager', loc: 'Kensington' },
-              { quote: 'Our office has never looked better. The team works quietly and efficiently around our schedule.',             attr: 'Business Owner',   loc: 'City of London' },
-            ].map(t => (
-              <div key={t.attr} className="bg-white border border-on-surface/6 px-8 py-10">
-                <div className="flex gap-0.5 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="material-symbols-outlined text-[16px] text-on-surface" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
-                  ))}
-                </div>
-                <p className="text-[17px] text-on-surface leading-relaxed mb-8" style={{ fontFamily: 'EB Garamond, serif' }}>
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="border-t border-on-surface/8 pt-6">
-                  <p className="font-label-md text-[10px] tracking-[0.18em] uppercase text-on-surface">{t.attr}</p>
-                  <p className="font-label-md text-[10px] tracking-[0.12em] uppercase text-on-surface/40 mt-1">{t.loc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 9. SHOP + JOIN ══ */}
-      <section className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20 py-20 md:py-28">
-        <div className="grid md:grid-cols-3 gap-12">
-
-          {/* Shop */}
-          <div className="md:col-span-2">
-            <Eyebrow>Professional Products</Eyebrow>
-            <div className="flex items-end justify-between mb-10">
-              <h2 className="text-[32px] md:text-[40px] leading-[1.1] text-on-surface max-w-[360px]" style={{ fontFamily: 'EB Garamond, serif' }}>
-                Professional products without the warehouse feeling.
-              </h2>
-              <Link href="/shop" className="hidden md:flex items-center gap-2 font-label-md text-[10px] tracking-[0.16em] uppercase text-on-surface hover:gap-3 transition-all whitespace-nowrap">
-                Shop All <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/request-a-quote" className="bg-[#607d8b] text-white px-8 py-4 text-[11px] uppercase tracking-widest font-bold hover:brightness-110 transition-all">
+                Request a Quote
               </Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
-              {[
-                { img: IMG.prod1, name: 'Microfibre Set',        cat: 'Cleaning Tools',    price: '£42.00',  href: '/shop' },
-                { img: IMG.prod2, name: 'Steam Mop Pro',         cat: 'Machines',          price: '£189.00', href: '/shop' },
-                { img: IMG.prod3, name: 'Citrus Pro Degreaser',  cat: 'Chemicals',         price: '£24.99',  href: '/shop' },
-                { img: IMG.prod4, name: 'Cordless HEPA Vacuum',  cat: 'Machines',          price: '£345.00', href: '/shop' },
-              ].map(p => (
-                <Link key={p.name} href={p.href} className="group block">
-                  <div className="relative h-[160px] bg-[#f4f2ef] overflow-hidden mb-3">
-                    <Image src={p.img} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <p className="font-label-md text-[9px] tracking-[0.14em] uppercase text-on-surface/40 mb-1">{p.cat}</p>
-                  <p className="font-body-md text-[13px] text-on-surface font-medium mb-1 leading-snug">{p.name}</p>
-                  <p className="font-label-md text-[12px] text-on-surface">{p.price}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Join franchise */}
-          <div className="relative overflow-hidden min-h-[420px]">
-            <Image src={IMG.franchise} alt="Join Scrubskwad" fill className="object-cover" />
-            <div className="absolute inset-0 bg-on-surface/62" />
-            <div className="relative z-10 flex flex-col justify-end h-full p-8 pb-10">
-              <p className="font-label-md text-[9px] tracking-[0.22em] uppercase text-white/50 mb-4">Join Scrubskwad</p>
-              <h3 className="text-[28px] leading-[1.15] text-white mb-4" style={{ fontFamily: 'EB Garamond, serif' }}>
-                Build your cleaning business with us.
-              </h3>
-              <p className="font-body-md text-[13px] text-white/60 leading-relaxed mb-8">
-                Join our franchise network and benefit from our brand, systems and support from day one.
-              </p>
-              <Link href="/franchise"
-                className="inline-block self-start border border-white text-white font-label-md text-[10px] tracking-[0.18em] uppercase px-6 py-3 hover:bg-white hover:text-on-surface transition-all">
-                Become a Partner
+              <Link href="/services" className="bg-transparent border border-gray-300 px-8 py-4 text-[11px] uppercase tracking-widest font-bold hover:bg-white transition-all">
+                Explore Services
               </Link>
             </div>
           </div>
         </div>
+        {/* Floating Info Card */}
+        <div className="absolute right-[10%] top-1/2 -translate-y-1/2 hidden xl:block w-[300px] bg-white p-10 shadow-2xl">
+          <div className="text-center mb-8">
+            <span className="text-5xl font-serif">2 hr</span>
+            <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mt-2">Average Response</p>
+          </div>
+          <ul className="space-y-4">
+            <li className="flex items-center text-xs font-semibold">
+              <span className="w-5 h-5 rounded-full bg-scrub-dark text-white flex items-center justify-center mr-3 text-[10px]">✓</span> Vetted Teams
+            </li>
+            <li className="flex items-center text-xs font-semibold">
+              <span className="w-5 h-5 rounded-full bg-scrub-dark text-white flex items-center justify-center mr-3 text-[10px]">✓</span> Fully Insured
+            </li>
+            <li className="flex items-center text-xs font-semibold">
+              <span className="w-5 h-5 rounded-full bg-scrub-dark text-white flex items-center justify-center mr-3 text-[10px]">✓</span> Fixed Pricing
+            </li>
+          </ul>
+        </div>
       </section>
 
-      {/* ══ 10. CLOSING CTA ══ */}
-      <section className="bg-on-surface py-20 md:py-24">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-20 flex flex-col md:flex-row items-center justify-between gap-10">
-          <h2 className="text-[30px] md:text-[42px] leading-[1.12] text-white max-w-[540px]" style={{ fontFamily: 'EB Garamond, serif' }}>
-            Let Scrubskwad make the property feel finished.
-          </h2>
-          <div className="flex flex-col items-start md:items-end gap-5 shrink-0">
-            <p className="font-body-md text-[13px] text-white/55 text-left md:text-right max-w-[280px]">
-              Request a quote and receive a response within two hours.
-            </p>
-            <Link href="/request-a-quote"
-              className="inline-block border border-white text-white font-label-md text-[11px] tracking-[0.18em] uppercase px-8 py-3.5 hover:bg-white hover:text-on-surface transition-all">
+      {/* ── Trust Bar ── */}
+      <section className="border-y border-gray-100 py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          <div>
+            <h3 className="text-4xl font-serif mb-1">500+</h3>
+            <p className="text-[10px] uppercase font-bold tracking-widest mb-2">Homes Maintained</p>
+            <p className="text-xs text-gray-500">Across London &amp; the<br />Home Counties</p>
+          </div>
+          <div>
+            <h3 className="text-4xl font-serif mb-1">4.9<span className="text-2xl">★</span></h3>
+            <p className="text-[10px] uppercase font-bold tracking-widest mb-2">Client Rating</p>
+            <p className="text-xs text-gray-500">Based on verified<br />reviews</p>
+          </div>
+          <div>
+            <h3 className="text-4xl font-serif mb-1">24hr</h3>
+            <p className="text-[10px] uppercase font-bold tracking-widest mb-2">Response Time</p>
+            <p className="text-xs text-gray-500">We aim to respond<br />within 2 hours</p>
+          </div>
+          <div>
+            <h3 className="text-4xl font-serif mb-1">100%</h3>
+            <p className="text-[10px] uppercase font-bold tracking-widest mb-2">Insured Teams</p>
+            <p className="text-xs text-gray-500">Your property is in<br />safe hands</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who We Are ── */}
+      <section className="py-24 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-6">Who We Are</p>
+          <h2 className="text-5xl leading-tight mb-8">Quiet luxury starts<br />with a clean space.</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            Scrubskwad provides premium domestic and commercial cleaning services designed around modern lifestyles.
+          </p>
+          <p className="text-gray-600 leading-relaxed mb-10">
+            From private residences to offices, every visit is carefully prepared, professionally executed and quality checked before completion.
+          </p>
+          <Link href="/about-us" className="inline-block bg-[#607d8b] text-white px-8 py-4 text-[11px] uppercase tracking-widest font-bold hover:brightness-110">
+            Learn More
+          </Link>
+        </div>
+        <div className="relative aspect-[4/3] overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            alt="Interior detail"
+            className="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3rdHXgZYW2T0W0AdUwO55ll0KKBTUSA2bWthSIYI0ITiRlTt3aCpcGG_3Fcl37CZW7tGB5tha5DxhTOwZBEkAYulSbajXVFJSqSM1CJdLEhCZVnfM9Rx1h8r_DzpAhYyjHqY03fACtTb7iIo-R_OqyWBY039mb4eGazwsScIwE-ALQWW_c2pXQSprPAgW7-mDazFTWP9mkeXc2kBQ5gxnWbDfY_tu-qb5tn53HdjL2Wuwb3KgJAYJNIyKM8lwo8AgtV7UYREF8a8"
+          />
+        </div>
+      </section>
+
+      {/* ── Services Grid ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-end mb-16">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-4">Services</p>
+              <h2 className="text-5xl">Cleaning shaped<br />around the property.</h2>
+            </div>
+            <Link href="/services" className="text-[10px] uppercase tracking-widest font-bold border-b border-gray-900 pb-1 flex items-center">
+              View All Services <span className="ml-2">→</span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <Link href="/services/regular-home-cleaning" className="group service-card cursor-pointer">
+              <div className="aspect-[4/5] overflow-hidden mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Regular Cleaning" className="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_2mQGfL0YMRSIUJQMxobT894H5HyyYMJPaZiVZS6s59DSjF8qRAm5eRLUPmjQg_udoIIbtEGMDSKt5ipL1TiKye9mIc4yw-OweenJkp5PVnK9HyTlXqg7fWTooXLWSo8c_P59UGj5W6N26lLTmVwhgaapNCeyyrVgMx9aTT0cVAa9QUu8NsbnqkgObhS6XBCsiZNWKV4ocTJArcUnF7dKc8YNW12NdyUCCQROUxAjFp_I2_YacS-3t3EHhuzG8FiHcc2QtvwQ0F0" />
+              </div>
+              <span className="text-xs text-gray-400 font-mono mb-2 block">01</span>
+              <h4 className="text-xl mb-3">Regular Home Cleaning</h4>
+              <p className="text-xs text-gray-500 leading-relaxed mb-4">Weekly, fortnightly or monthly visits tailored around your lifestyle.</p>
+              <span className="text-[10px] uppercase tracking-widest font-bold flex items-center">View <span className="ml-1">→</span></span>
+            </Link>
+            <Link href="/services/deep-cleaning" className="group service-card cursor-pointer">
+              <div className="aspect-[4/5] overflow-hidden mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Deep Cleaning" className="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2m5ikKzLqrLW-RKGSL2MoIMNjwzmQNBxlKBTZdEoEGenzUKpwjx7-tMtfCnD9PkZ4HUtYOpsHwc7K8zbionbULN-tZNRndhen44UVu0rDu8nqIcpnPT3wBenmVHRQcgzkzlNK5Z2RfT4SXR0LQhhxt-nktGFHujpGNL69Si20bKfwmhx1cXKhg8jJCrTZxenEdzrHVQrDwxsXZFYZjOkjyeXQSafpQBE_lgKA7aig50EMvUT8DZbm7mwp9SmX3DEgW4mh7hx8lks" />
+              </div>
+              <span className="text-xs text-gray-400 font-mono mb-2 block">02</span>
+              <h4 className="text-xl mb-3">Deep Cleaning</h4>
+              <p className="text-xs text-gray-500 leading-relaxed mb-4">A complete reset for kitchens, bathrooms, skirting boards and hidden surfaces.</p>
+              <span className="text-[10px] uppercase tracking-widest font-bold flex items-center">View <span className="ml-1">→</span></span>
+            </Link>
+            <Link href="/services/end-of-tenancy-cleaning" className="group service-card cursor-pointer">
+              <div className="aspect-[4/5] overflow-hidden mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="End of Tenancy" className="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz-r2zH3hma-rbY_LldPc8ztFaui2_AoJ_OZUu9xJ7Qx3EquHb6wIAI9yBA_nkrHgcvvWBGnk79_ZTulDIVxyE_CaRC5k7MN0tfkNoEmYcfSihIG0qFV3lWkZufzlxl3YXOzhvpFml9Wusps-bto6NK1crrdniAoXtv20FRMCooXVzRe5DWvRJVDl_cS0BEsjDVi9EvV0did3B4zVHWSI0_RWq0t8wi0xImZ_ST_alxR199BUImLz6vQZGWzDxncvFbZhau4VpDYg" />
+              </div>
+              <span className="text-xs text-gray-400 font-mono mb-2 block">03</span>
+              <h4 className="text-xl mb-3">End Of Tenancy</h4>
+              <p className="text-xs text-gray-500 leading-relaxed mb-4">Move in or move out with confidence.</p>
+              <span className="text-[10px] uppercase tracking-widest font-bold flex items-center">View <span className="ml-1">→</span></span>
+            </Link>
+            <Link href="/services/office-commercial-cleaning" className="group service-card cursor-pointer">
+              <div className="aspect-[4/5] overflow-hidden mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Office Cleaning" className="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTtINzcUgooJjqPZCg_sf2MRVsP5cINo4WfH019Epy9f25tP0fBCMihCIxzRWX5_eJ4gBnrN50hPGnDDlj3YdZD5hkxULxFmUNrPntqkeo5Y-Fq4EZswkzVM8a0oe4SVFlGEfJWn4Mqvx5XH5i3fymkhyBHXoi2LAGUMFatpZe1HXQcpzZoKnti8CS_BQ1L8mw9f7NpaoaW83T9kMY5cgLYC3e3qRfiWtatQjSwQDb4ZIXjiDvvDZBayr7ZHzFW_se06UWyDwhqMI" />
+              </div>
+              <span className="text-xs text-gray-400 font-mono mb-2 block">04</span>
+              <h4 className="text-xl mb-3">Office &amp; Commercial</h4>
+              <p className="text-xs text-gray-500 leading-relaxed mb-4">Reliable commercial cleaning before your team arrives.</p>
+              <span className="text-[10px] uppercase tracking-widest font-bold flex items-center">View <span className="ml-1">→</span></span>
+            </Link>
+            <Link href="/services/carpet-upholstery-cleaning" className="group service-card cursor-pointer">
+              <div className="aspect-[4/5] overflow-hidden mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Carpet Cleaning" className="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-msQDM9qrXpegovRC_I4b3tMGLz02jt74azVlZLDnh8__q9RRyGBd8WZbMBNMil97kLmpO3pBk9Vmnsc-Ouu9jyIgdLWh4F9IMgSesmfPK1XRHxmt_wNw8qBdYXWdix2jq7Q9wZxU2H9GrLPDWssO00gWUloiHmvPSqSTOJYZLCcO8miVdbBNntmxYU_62t5-JdKI0Sa3pmGKmpYoqjCBYrtTt8xhzJFKaoFsMvtx3jYEsqjZ96oULxkCDQ8zQZioiDdtwotmisk" />
+              </div>
+              <span className="text-xs text-gray-400 font-mono mb-2 block">05</span>
+              <h4 className="text-xl mb-3">Carpet &amp; Upholstery</h4>
+              <p className="text-xs text-gray-500 leading-relaxed mb-4">Professional fabric and fibre care.</p>
+              <span className="text-[10px] uppercase tracking-widest font-bold flex items-center">View <span className="ml-1">→</span></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Recent Projects ── */}
+      <section className="py-24 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-12">
+            <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-4">Recent Projects</p>
+            <h2 className="text-5xl">Results that<br />speak quietly.</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+              <div className="aspect-[4/3] overflow-hidden bg-gray-100 mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Luxury Home" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgwqWlh67fSy5If-MgKiTzaNGc1Mefhkmek2K4lFcfF6vOy5cpZGx4qUIj1AyXQSlCzBPAX0BIydJjVl9Dt5_20u4rshqyyB8pFtPd7oPbILsWKQxFZn3GpfTdYm-tXs6dedkXArZmCimGQwR6jvrJJYaV16FU6lvNvx_JtgwMWMMCHTMEF7g-74UwT64JSDexDIHVkzIWfr8aoBJRdPfIn_9bfnM93wCXk3MKAQCr5akeI77Gy8KuWbn1hZ4pJfKae1TWuFOA9YI" />
+              </div>
+              <p className="text-xs font-semibold text-gray-400">Luxury Home</p>
+            </div>
+            <div>
+              <div className="aspect-[4/3] overflow-hidden bg-gray-100 mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Executive Office" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTtINzcUgooJjqPZCg_sf2MRVsP5cINo4WfH019Epy9f25tP0fBCMihCIxzRWX5_eJ4gBnrN50hPGnDDlj3YdZD5hkxULxFmUNrPntqkeo5Y-Fq4EZswkzVM8a0oe4SVFlGEfJWn4Mqvx5XH5i3fymkhyBHXoi2LAGUMFatpZe1HXQcpzZoKnti8CS_BQ1L8mw9f7NpaoaW83T9kMY5cgLYC3e3qRfiWtatQjSwQDb4ZIXjiDvvDZBayr7ZHzFW_se06UWyDwhqMI" />
+              </div>
+              <p className="text-xs font-semibold text-gray-400">Executive Office</p>
+            </div>
+            <div>
+              <div className="aspect-[4/3] overflow-hidden bg-gray-100 mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="Short Stay Apartment" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2m5ikKzLqrLW-RKGSL2MoIMNjwzmQNBxlKBTZdEoEGenzUKpwjx7-tMtfCnD9PkZ4HUtYOpsHwc7K8zbionbULN-tZNRndhen44UVu0rDu8nqIcpnPT3wBenmVHRQcgzkzlNK5Z2RfT4SXR0LQhhxt-nktGFHujpGNL69Si20bKfwmhx1cXKhg8jJCrTZxenEdzrHVQrDwxsXZFYZjOkjyeXQSafpQBE_lgKA7aig50EMvUT8DZbm7mwp9SmX3DEgW4mh7hx8lks" />
+              </div>
+              <p className="text-xs font-semibold text-gray-400">Short Stay Apartment</p>
+            </div>
+            <div>
+              <div className="aspect-[4/3] overflow-hidden bg-gray-100 mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt="End Of Tenancy" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz-r2zH3hma-rbY_LldPc8ztFaui2_AoJ_OZUu9xJ7Qx3EquHb6wIAI9yBA_nkrHgcvvWBGnk79_ZTulDIVxyE_CaRC5k7MN0tfkNoEmYcfSihIG0qFV3lWkZufzlxl3YXOzhvpFml9Wusps-bto6NK1crrdniAoXtv20FRMCooXVzRe5DWvRJVDl_cS0BEsjDVi9EvV0did3B4zVHWSI0_RWq0t8wi0xImZ_ST_alxR199BUImLz6vQZGWzDxncvFbZhau4VpDYg" />
+              </div>
+              <p className="text-xs font-semibold text-gray-400">End Of Tenancy</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How It Works ── */}
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-20">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-4">How It Works</p>
+              <h2 className="text-5xl">Luxury cleaning<br />without the friction.</h2>
+            </div>
+            <Link href="/request-a-quote" className="bg-[#607d8b] text-white px-8 py-4 text-[11px] uppercase tracking-widest font-bold hover:brightness-110">
+              Request Quote
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="flex items-center space-x-6 p-6 border-l border-gray-100">
+              <div className="w-10 flex flex-col items-center">
+                <svg className="w-6 h-6 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                </svg>
+                <span className="text-xs font-mono text-gray-300">01</span>
+              </div>
+              <p className="text-xs font-semibold text-gray-600 leading-snug">Tell us about<br />the property.</p>
+            </div>
+            <div className="flex items-center space-x-6 p-6 border-l border-gray-100">
+              <div className="w-10 flex flex-col items-center">
+                <svg className="w-6 h-6 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                </svg>
+                <span className="text-xs font-mono text-gray-300">02</span>
+              </div>
+              <p className="text-xs font-semibold text-gray-600 leading-snug">Receive a clear<br />fixed quote.</p>
+            </div>
+            <div className="flex items-center space-x-6 p-6 border-l border-gray-100">
+              <div className="w-10 flex flex-col items-center">
+                <svg className="w-6 h-6 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                </svg>
+                <span className="text-xs font-mono text-gray-300">03</span>
+              </div>
+              <p className="text-xs font-semibold text-gray-600 leading-snug">Our team arrives<br />fully briefed.</p>
+            </div>
+            <div className="flex items-center space-x-6 p-6 border-l border-gray-100">
+              <div className="w-10 flex flex-col items-center">
+                <svg className="w-6 h-6 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                </svg>
+                <span className="text-xs font-mono text-gray-300">04</span>
+              </div>
+              <p className="text-xs font-semibold text-gray-600 leading-snug">Enjoy a perfectly<br />prepared space.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Value Props ── */}
+      <section className="py-24 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 mb-6 flex items-center justify-center border border-gray-200 rounded-full">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+              </svg>
+            </div>
+            <h5 className="text-sm font-bold uppercase tracking-wider mb-3">Vetted Teams</h5>
+            <p className="text-xs text-gray-500 leading-relaxed px-4">Every cleaner is referenced, screened and trained to our exacting standards.</p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 mb-6 flex items-center justify-center border border-gray-200 rounded-full">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+              </svg>
+            </div>
+            <h5 className="text-sm font-bold uppercase tracking-wider mb-3">Fully Insured</h5>
+            <p className="text-xs text-gray-500 leading-relaxed px-4">Complete peace of mind with full public liability insurance.</p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 mb-6 flex items-center justify-center border border-gray-200 rounded-full">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+              </svg>
+            </div>
+            <h5 className="text-sm font-bold uppercase tracking-wider mb-3">Fixed Quotes</h5>
+            <p className="text-xs text-gray-500 leading-relaxed px-4">No hidden fees or surprise charges. What we quote is what you pay.</p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 mb-6 flex items-center justify-center border border-gray-200 rounded-full">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+              </svg>
+            </div>
+            <h5 className="text-sm font-bold uppercase tracking-wider mb-3">Responsive Support</h5>
+            <p className="text-xs text-gray-500 leading-relaxed px-4">Average response time under two hours, every day of the week.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-12">Client Works</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            <div className="border-l-2 border-scrub-gold pl-8">
+              <div className="text-scrub-gold text-lg mb-4">★★★★★</div>
+              <p className="text-lg italic font-serif mb-6 leading-relaxed">&ldquo;The team did not simply clean the property. They restored the feeling of the house.&rdquo;</p>
+              <p className="text-[10px] uppercase tracking-widest font-bold">Private Client • London</p>
+            </div>
+            <div className="border-l-2 border-scrub-gold pl-8">
+              <div className="text-scrub-gold text-lg mb-4">★★★★★</div>
+              <p className="text-lg italic font-serif mb-6 leading-relaxed">&ldquo;Professional, punctual and exceptionally thorough.&rdquo;</p>
+              <p className="text-[10px] uppercase tracking-widest font-bold">Property Manager</p>
+            </div>
+            <div className="border-l-2 border-scrub-gold pl-8">
+              <div className="text-scrub-gold text-lg mb-4">★★★★★</div>
+              <p className="text-lg italic font-serif mb-6 leading-relaxed">&ldquo;Our office has never looked better.&rdquo;</p>
+              <p className="text-[10px] uppercase tracking-widest font-bold">Business Owner</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Products & Franchise ── */}
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12">
+          <div className="md:col-span-8">
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-4">Professional Products</p>
+                <h2 className="text-4xl">Professional products<br />without the warehouse feeling.</h2>
+              </div>
+              <Link href="/shop" className="text-[10px] uppercase tracking-widest font-bold border-b border-gray-900 pb-1">
+                Shop All Products →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="group">
+                <div className="aspect-square bg-gray-50 mb-4 flex items-center justify-center overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img alt="Microfibre Set" className="group-hover:scale-110 transition-transform duration-500 p-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgwqWlh67fSy5If-MgKiTzaNGc1Mefhkmek2K4lFcfF6vOy5cpZGx4qUIj1AyXQSlCzBPAX0BIydJjVl9Dt5_20u4rshqyyB8pFtPd7oPbILsWKQxFZn3GpfTdYm-tXs6dedkXArZmCimGQwR6jvrJJYaV16FU6lvNvx_JtgwMWMMCHTMEF7g-74UwT64JSDexDIHVkzIWfr8aoBJRdPfIn_9bfnM93wCXk3MKAQCr5akeI77Gy8KuWbn1hZ4pJfKae1TWuFOA9YI" />
+                </div>
+                <h5 className="text-[10px] font-bold uppercase tracking-wider mb-1">Microfibre Set</h5>
+                <p className="text-[9px] text-gray-500 mb-2">Professional finishing cloths</p>
+                <p className="text-[10px] font-bold">£42.00</p>
+              </div>
+              <div className="group">
+                <div className="aspect-square bg-gray-50 mb-4 flex items-center justify-center overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img alt="Steam Mop Pro" className="group-hover:scale-110 transition-transform duration-500 p-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTtINzcUgooJjqPZCg_sf2MRVsP5cINo4WfH019Epy9f25tP0fBCMihCIxzRWX5_eJ4gBnrN50hPGnDDlj3YdZD5hkxULxFmUNrPntqkeo5Y-Fq4EZswkzVM8a0oe4SVFlGEfJWn4Mqvx5XH5i3fymkhyBHXoi2LAGUMFatpZe1HXQcpzZoKnti8CS_BQ1L8mw9f7NpaoaW83T9kMY5cgLYC3e3qRfiWtatQjSwQDb4ZIXjiDvvDZBayr7ZHzFW_se06UWyDwhqMI" />
+                </div>
+                <h5 className="text-[10px] font-bold uppercase tracking-wider mb-1">Steam Mop Pro</h5>
+                <p className="text-[9px] text-gray-500 mb-2">Hard floor maintenance</p>
+                <p className="text-[10px] font-bold">£189.00</p>
+              </div>
+              <div className="group">
+                <div className="aspect-square bg-gray-50 mb-4 flex items-center justify-center overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img alt="Citrus Pro Degreaser" className="group-hover:scale-110 transition-transform duration-500 p-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2m5ikKzLqrLW-RKGSL2MoIMNjwzmQNBxlKBTZdEoEGenzUKpwjx7-tMtfCnD9PkZ4HUtYOpsHwc7K8zbionbULN-tZNRndhen44UVu0rDu8nqIcpnPT3wBenmVHRQcgzkzlNK5Z2RfT4SXR0LQhhxt-nktGFHujpGNL69Si20bKfwmhx1cXKhg8jJCrTZxenEdzrHVQrDwxsXZFYZjOkjyeXQSafpQBE_lgKA7aig50EMvUT8DZbm7mwp9SmX3DEgW4mh7hx8lks" />
+                </div>
+                <h5 className="text-[10px] font-bold uppercase tracking-wider mb-1">Citrus Pro Degreaser</h5>
+                <p className="text-[9px] text-gray-500 mb-2">Kitchen and utility reset</p>
+                <p className="text-[10px] font-bold">£24.99</p>
+              </div>
+              <div className="group">
+                <div className="aspect-square bg-gray-50 mb-4 flex items-center justify-center overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img alt="Cordless HEPA Vacuum" className="group-hover:scale-110 transition-transform duration-500 p-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz-r2zH3hma-rbY_LldPc8ztFaui2_AoJ_OZUu9xJ7Qx3EquHb6wIAI9yBA_nkrHgcvvWBGnk79_ZTulDIVxyE_CaRC5k7MN0tfkNoEmYcfSihIG0qFV3lWkZufzlxl3YXOzhvpFml9Wusps-bto6NK1crrdniAoXtv20FRMCooXVzRe5DWvRJVDl_cS0BEsjDVi9EvV0did3B4zVHWSI0_RWq0t8wi0xImZ_ST_alxR199BUImLz6vQZGWzDxncvFbZhau4VpDYg" />
+                </div>
+                <h5 className="text-[10px] font-bold uppercase tracking-wider mb-1">Cordless HEPA Vacuum</h5>
+                <p className="text-[9px] text-gray-500 mb-2">Fine dust and daily debris</p>
+                <p className="text-[10px] font-bold">£345.00</p>
+              </div>
+            </div>
+          </div>
+          <div className="md:col-span-4 bg-gray-50 p-10 flex flex-col justify-between">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-4">Join Scrubskwad</p>
+              <h3 className="text-4xl mb-6">Build your cleaning business with us.</h3>
+              <p className="text-xs text-gray-500 leading-relaxed mb-8">Access premium clients, flexible schedules and ongoing support.</p>
+            </div>
+            <Link href="/franchise" className="block w-full bg-scrub-dark text-white py-4 text-[11px] uppercase tracking-widest font-bold hover:brightness-110 text-center">
+              Become A Partner
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Bottom CTA ── */}
+      <section className="py-16 bg-[#e2ddd5]">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+          <h2 className="text-4xl">Let Scrubskwad make the<br />property feel finished.</h2>
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <p className="text-xs font-semibold max-w-[200px]">Request a quote and receive a response within two hours.</p>
+            <Link href="/request-a-quote" className="bg-[#607d8b] text-white px-10 py-5 text-[11px] uppercase tracking-widest font-bold hover:brightness-110">
               Book Your Clean
             </Link>
           </div>

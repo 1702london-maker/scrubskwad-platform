@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @import "tailwindcss";
@@ -8,11 +8,31 @@
 }
 
 body {
-  background-color: #f9f9f9;
-  color: #1a1c1c;
-  font-family: 'Hanken Grotesk', sans-serif;
+  background-color: #ffffff;
+  color: #2d3436;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: -0.01em;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hero-gradient {
+  background: linear-gradient(to right, #f9f9f9 40%, transparent 100%);
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
 }
 
 .material-symbols-outlined {

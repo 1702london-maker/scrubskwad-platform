@@ -10,6 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "scrub-gold":   "#d4c3a1",
+        "scrub-dark":   "#2d3436",
+        "scrub-grey":   "#636e72",
+        "scrub-light":  "#f9f9f9",
+        "scrub-accent": "#607d8b",
         "surface-bright": "#f9f9f9",
         "tertiary-fixed": "#e6e2dc",
         "surface-dim": "#dadada",

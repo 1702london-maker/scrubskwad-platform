@@ -1,24 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/lib/cart-context';
 import { useState } from 'react';
 
 const serviceLinks = [
-  { label: 'Regular Home Cleaning', href: '/services/regular-home-cleaning' },
-  { label: 'Deep Cleaning', href: '/services/deep-cleaning' },
-  { label: 'End of Tenancy Cleaning', href: '/services/end-of-tenancy-cleaning' },
+  { label: 'Regular Home Cleaning',        href: '/services/regular-home-cleaning' },
+  { label: 'Deep Cleaning',                href: '/services/deep-cleaning' },
+  { label: 'End of Tenancy Cleaning',      href: '/services/end-of-tenancy-cleaning' },
   { label: 'Office & Commercial Cleaning', href: '/services/office-commercial-cleaning' },
   { label: 'Carpet & Upholstery Cleaning', href: '/services/carpet-upholstery-cleaning' },
 ];
 
 const shopLinks = [
   { label: 'Cleaning Chemicals & Solutions', href: '/shop/cleaning-chemicals-solutions' },
-  { label: 'Cleaning Tools & Equipment', href: '/shop/cleaning-tools-equipment' },
-  { label: 'Cleaning Machines', href: '/shop/cleaning-machines' },
-  { label: 'All Products', href: '/shop' },
+  { label: 'Cleaning Tools & Equipment',     href: '/shop/cleaning-tools-equipment' },
+  { label: 'Cleaning Machines',              href: '/shop/cleaning-machines' },
+  { label: 'All Products',                   href: '/shop' },
 ];
 
 export default function Header() {
@@ -31,36 +30,32 @@ export default function Header() {
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
 
   return (
-    <header className="fixed top-0 w-full z-50 glass-header border-b border-[#c8c4be]/30">
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-4 md:px-20 max-w-[1400px] mx-auto">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 shrink-0">
-          <Image src="/logo.jpg" alt="Scrubskwad" width={54} height={54} className="object-contain" />
-          <span className="font-headline-md text-[25px] leading-none text-primary tracking-tight font-bold hidden sm:block">Scrubskwad</span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center justify-center gap-1">
-          <Link
-            href="/"
-            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
-          >
-            Home
+        <div className="flex-shrink-0">
+          <Link href="/">
+            <span className="text-2xl font-serif font-semibold tracking-tight">Scrubskwad</span>
           </Link>
+        </div>
+
+        {/* Main Menu */}
+        <div className="hidden md:flex items-center space-x-8">
+          <Link href="/" className={`nav-link ${pathname === '/' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'}`}>Home</Link>
 
           {/* Services flyout */}
           <div className="nav-item relative">
-            <Link href="/services" className={`block px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${isActive('/services') ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}>
-              Services
-            </Link>
-            <div className="flyout-menu absolute top-full left-0 mt-3 w-72 bg-surface-container-lowest border border-tertiary-fixed shadow-[0_40px_80px_-20px_rgba(212,195,161,0.15)] z-50">
+            <button className="nav-link text-gray-500 hover:text-gray-900 flex items-center">
+              Services{' '}
+              <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+              </svg>
+            </button>
+            <div className="flyout-menu absolute top-full left-0 mt-3 w-64 bg-white border border-gray-100 shadow-lg z-50">
               {serviceLinks.map(link => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block px-6 py-3.5 font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low border-b border-tertiary-fixed/30 last:border-0 transition-colors"
-                >
+                <Link key={link.href} href={link.href}
+                  className="block px-5 py-3 text-xs text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-b border-gray-50 last:border-0 transition-colors">
                   {link.label}
                 </Link>
               ))}
@@ -69,135 +64,92 @@ export default function Header() {
 
           {/* Shop flyout */}
           <div className="nav-item relative">
-            <Link href="/shop" className={`block px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${isActive('/shop') ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}>
-              Shop
-            </Link>
-            <div className="flyout-menu absolute top-full left-0 mt-3 w-64 bg-surface-container-lowest border border-tertiary-fixed shadow-[0_40px_80px_-20px_rgba(212,195,161,0.15)] z-50">
+            <button className="nav-link text-gray-500 hover:text-gray-900 flex items-center">
+              Shop{' '}
+              <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+              </svg>
+            </button>
+            <div className="flyout-menu absolute top-full left-0 mt-3 w-64 bg-white border border-gray-100 shadow-lg z-50">
               {shopLinks.map(link => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block px-6 py-3.5 font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low border-b border-tertiary-fixed/30 last:border-0 transition-colors"
-                >
+                <Link key={link.href} href={link.href}
+                  className="block px-5 py-3 text-xs text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-b border-gray-50 last:border-0 transition-colors">
                   {link.label}
                 </Link>
               ))}
             </div>
           </div>
 
-          <Link
-            href="/franchise"
-            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/franchise' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
-          >
-            Franchise
-          </Link>
-          <Link
-            href="/about-us"
-            className={`font-label-md text-label-md transition-colors ${isActive('/about-us') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className={`px-4 py-3 font-label-md text-[12px] uppercase tracking-[0.18em] transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-on-secondary-container hover:text-primary'}`}
-          >
-            Contact
-          </Link>
-        </nav>
+          <Link href="/franchise" className={`nav-link ${pathname === '/franchise' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'}`}>Franchise</Link>
+          <Link href="/about-us"  className={`nav-link ${isActive('/about-us') ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'}`}>About</Link>
+          <Link href="/contact"   className={`nav-link ${pathname === '/contact' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'}`}>Contact</Link>
+        </div>
 
-        {/* Right actions */}
-        <div className="flex items-center justify-end space-x-4">
-          <div className="hidden md:flex items-center space-x-3">
-            <Link href="/account" aria-label="Account">
-              <span className="font-label-md text-[11px] uppercase tracking-[0.18em] text-secondary hover:text-primary transition-colors">Account</span>
-            </Link>
-            <Link href="/cart" className="relative inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors" aria-label="Cart">
-              <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6.2 7.5h13.1l-1.2 8.2H7.4L6.2 7.5Z" stroke="currentColor" strokeWidth="1.7" />
-                <path d="M6.2 7.5 5.7 4H3.8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square" />
-                <path d="M8.7 20h.1M17 20h.1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-              </svg>
-              {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-          </div>
-          <Link
-            href="/request-a-quote"
-            className="hidden bg-primary px-5 py-3 font-label-md text-[11px] uppercase tracking-[0.18em] text-on-primary transition-all hover:bg-primary/90 active:scale-[0.98] md:block"
-          >
+        {/* Action Buttons */}
+        <div className="flex items-center space-x-6">
+          <Link href="/account" className="nav-link text-gray-500 hover:text-gray-900 hidden md:flex items-center">
+            Account{' '}
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            </svg>
+          </Link>
+
+          <Link href="/cart" className="hidden md:flex items-center relative" aria-label="Cart">
+            <svg className="w-5 h-5 text-gray-500 hover:text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            </svg>
+            {totalItems > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 bg-scrub-dark text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+
+          <Link href="/request-a-quote" className="hidden md:block border border-gray-900 px-6 py-2.5 text-[10px] uppercase tracking-widest font-semibold hover:bg-gray-900 hover:text-white transition-all">
             Book Now
           </Link>
 
           {/* Mobile hamburger */}
-          <button
-            className="md:hidden text-secondary hover:text-primary transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className="font-label-md text-[12px] uppercase tracking-[0.18em]">{mobileOpen ? 'Close' : 'Menu'}</span>
+          <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileOpen
+                ? <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                : <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />}
+            </svg>
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-surface-container-lowest border-t border-tertiary-fixed px-6 py-6 space-y-4">
-          <Link href="/" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>Home</Link>
-
+        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-6 space-y-4">
+          <Link href="/" className="block nav-link text-gray-900 py-2" onClick={() => setMobileOpen(false)}>Home</Link>
           <div>
-            <button
-              className="flex items-center justify-between w-full font-label-md text-label-md text-on-surface py-2"
-              onClick={() => setMobileServices(!mobileServices)}
-            >
-              Services <span>{mobileServices ? '-' : '+'}</span>
+            <button className="flex items-center justify-between w-full nav-link text-gray-500 py-2" onClick={() => setMobileServices(!mobileServices)}>
+              Services <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
             </button>
             {mobileServices && (
-              <div className="pl-4 space-y-2 mt-2">
-                {serviceLinks.map(l => (
-                  <Link key={l.href} href={l.href} className="block font-body-md text-secondary py-1" onClick={() => setMobileOpen(false)}>{l.label}</Link>
-                ))}
+              <div className="pl-4 space-y-2 mt-1">
+                {serviceLinks.map(l => <Link key={l.href} href={l.href} className="block text-xs text-gray-500 py-1" onClick={() => setMobileOpen(false)}>{l.label}</Link>)}
               </div>
             )}
           </div>
-
           <div>
-            <button
-              className="flex items-center justify-between w-full font-label-md text-label-md text-on-surface py-2"
-              onClick={() => setMobileShop(!mobileShop)}
-            >
-              Shop <span>{mobileShop ? '-' : '+'}</span>
+            <button className="flex items-center justify-between w-full nav-link text-gray-500 py-2" onClick={() => setMobileShop(!mobileShop)}>
+              Shop <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
             </button>
             {mobileShop && (
-              <div className="pl-4 space-y-2 mt-2">
-                {shopLinks.map(l => (
-                  <Link key={l.href} href={l.href} className="block font-body-md text-secondary py-1" onClick={() => setMobileOpen(false)}>{l.label}</Link>
-                ))}
+              <div className="pl-4 space-y-2 mt-1">
+                {shopLinks.map(l => <Link key={l.href} href={l.href} className="block text-xs text-gray-500 py-1" onClick={() => setMobileOpen(false)}>{l.label}</Link>)}
               </div>
             )}
           </div>
-
-          <Link href="/franchise" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>Franchise</Link>
-          <Link href="/about-us" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>About</Link>
-          <Link href="/contact" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>Contact</Link>
-
-          <div className="flex items-center gap-4 pt-2 border-t border-tertiary-fixed">
-            <Link href="/account" onClick={() => setMobileOpen(false)}>
-              <span className="font-label-md text-[12px] uppercase tracking-[0.18em] text-secondary">Account</span>
-            </Link>
-            <Link href="/cart" className="relative" onClick={() => setMobileOpen(false)}>
-              <span className="font-label-md text-[12px] uppercase tracking-[0.18em] text-secondary">Cart</span>
-              {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-            <Link href="/request-a-quote" className="ml-auto bg-primary-container text-on-primary-container px-5 py-2 font-label-md text-label-md" onClick={() => setMobileOpen(false)}>
-              Book Now
-            </Link>
+          <Link href="/franchise" className="block nav-link text-gray-500 py-2" onClick={() => setMobileOpen(false)}>Franchise</Link>
+          <Link href="/about-us"  className="block nav-link text-gray-500 py-2" onClick={() => setMobileOpen(false)}>About</Link>
+          <Link href="/contact"   className="block nav-link text-gray-500 py-2" onClick={() => setMobileOpen(false)}>Contact</Link>
+          <div className="flex items-center gap-4 pt-3 border-t border-gray-100">
+            <Link href="/account" onClick={() => setMobileOpen(false)} className="nav-link text-gray-500">Account</Link>
+            <Link href="/request-a-quote" className="ml-auto border border-gray-900 px-5 py-2 text-[10px] uppercase tracking-widest font-semibold" onClick={() => setMobileOpen(false)}>Book Now</Link>
           </div>
         </div>
       )}
