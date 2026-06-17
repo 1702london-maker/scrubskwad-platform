@@ -95,6 +95,12 @@ export default function Header() {
             Franchise
           </Link>
           <Link
+            href="/about-us"
+            className={`font-label-md text-label-md transition-colors ${isActive('/about-us') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
+          >
+            About
+          </Link>
+          <Link
             href="/contact"
             className={`font-label-md text-label-md transition-colors ${pathname === '/contact' ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-secondary-container hover:text-primary'}`}
           >
@@ -173,6 +179,7 @@ export default function Header() {
           </div>
 
           <Link href="/franchise" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>Franchise</Link>
+          <Link href="/about-us" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>About</Link>
           <Link href="/contact" className="block font-label-md text-label-md text-on-surface py-2" onClick={() => setMobileOpen(false)}>Contact</Link>
 
           <div className="flex items-center gap-4 pt-2 border-t border-tertiary-fixed">
